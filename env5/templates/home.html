@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<LINK href="../static/dashboard_mqtt.css" rel="stylesheet" type="text/css">
+    
+    <title>Monitoraggio serre - MQTT</title>
+	<meta http-equiv="refresh" content="{{REFRESH}}">
+ 
+  </head>
+  <body>
+	<H2>Laboratorio LTR<BR>AS 2020_2021<BR>IoT</H2>
+    <div id="g1"></div>
+    <div id="g2"></div>
+    <P>
+      	Simulazione di un sistema di rilevamento dell’umidità,
+		e della temperatura per una azienda produttrice di piante ornamentali 
+		con invio dati tramite publisher MQTT e dashboarding in real-time
+		mediante SPA Flask.
+	</P>
+<!-- Raphael must be included before justgage -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var g1, g2
+            var g1 = new JustGage({
+                id: "g1",
+                value:50,
+                min: 0,
+                max: 50,
+                title: "Temperatura",
+                levelColors:	["#a9d70b", "#f9c802", "#ff0000"],
+                humanFriendly: false,
+                symbol: "°C",
+                formatNumber: true,
+                pointer: true
+            });
+            var g2 = new JustGage({
+                id: "g2",
+                value: 45,
+                min: 0,
+                max: 100,
+                title: "Umidità",
+                levelColors:	["#a9d70b", "#f9c802", "#ff0000"],
+                humanFriendly: false,
+                donut: false,
+                pointer: true,
+                symbol: "%",
+                percents: true,
+            });
+        });
+    </script>
+	<HR>
+	<P>Aggiornamento ogni {{REFRESH}} secondi.</P>
+</body>
+</html>
